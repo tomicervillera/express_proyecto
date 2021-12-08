@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const peliculasSchema = mongoose.Schema({
+const peliculasSchema = new mongoose.Schema({
     idPersonaje: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Personajes",
