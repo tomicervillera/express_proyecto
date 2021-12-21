@@ -4,7 +4,7 @@ const models = require('../models/index');
 
 const login = async (req, res) => {
     try {
-        
+
         console.log(req.session.usuarioActual);
         const nombreUsuario = req.body.nombreUsuario;
         const contraseña = req.body.contraseña;
@@ -32,5 +32,16 @@ const login = async (req, res) => {
     }
 }
 
+const logout = async (req, res) => {
 
-module.exports = { login: login };
+    try {
+        req.session.destroy();
+        return res.status(200).json({ error: false });
+    } catch (error) {
+        return res.status(500).json({ msg: error, error: true });
+    }
+
+}
+
+
+module.exports = { login: login, logout: logout };
